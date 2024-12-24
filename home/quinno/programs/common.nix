@@ -2,12 +2,7 @@
   lib,
   pkgs,
   ...
-}:   let
-
-    pkgsUnstable = import <nixpkgs-unstable> {};
-
-  in
-  {
+}: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -44,11 +39,6 @@
     pciutils # lspci
     usbutils # lsusb
   ];
-
-  home.packages = with pkgsUnstable; [
-    nil
-  ];
-
 
   programs = {
     starship = {
