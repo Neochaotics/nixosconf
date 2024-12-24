@@ -10,15 +10,22 @@
     inputs.disko.nixosModules.disko
     inputs.impermanence.nixosModules.impermanence
     inputs.home-manager.nixosModules.home-manager
-    ../modules/common/
+    ../modules/common
   ];
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
 
   hostSpec = {
     username="quinno";
   };
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "bk";
+  home-manager.users.quinno = import ../home/quinno; #${hostSpec.username} = import ../home/${hostSpec.username};
+  home-manager.extraSpecialArgs = {
+    inherit pkgs inputs;
+    hostSpec = config.hostSpec;
+  };
+
 
   nixpkgs = {
     config = {
