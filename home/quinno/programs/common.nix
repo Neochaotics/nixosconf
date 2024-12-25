@@ -38,7 +38,7 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
-  ];
+  ];1 
 
   programs = {
     starship = {
