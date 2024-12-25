@@ -1,15 +1,11 @@
 {
   pkgs,
   config,
+  nixpkgs-unstable,
   ...
-}:let
+}:{
 
-    pkgsUnstable = import <nixpkgs-unstable> {};
-
-  in
-  {
-
-  home.packages = with pkgsUnstable; [
+  home.packages = with nixpkgs-unstable; [
     nil
   ];
 
