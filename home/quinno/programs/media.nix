@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  ...
-}:{
+{ pkgs
+, config
+, ...
+}: {
 
   home.packages = with pkgs; [
     # audio control
@@ -16,8 +15,8 @@
   programs = {
     mpv = {
       enable = true;
-      defaultProfiles = ["gpu-hq"];
-      scripts = [pkgs.mpvScripts.mpris];
+      defaultProfiles = [ "gpu-hq" ];
+      scripts = [ pkgs.mpvScripts.mpris ];
     };
   };
 

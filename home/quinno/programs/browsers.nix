@@ -1,7 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }: {
   programs = {
     chromium = {
@@ -13,7 +12,7 @@
 
     firefox = {
       enable = true;
-      profiles.quinno = {};
+      profiles.quinno = { };
     };
   };
 }

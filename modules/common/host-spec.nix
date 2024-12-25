@@ -1,9 +1,8 @@
 # Specifications For Differentiating Hosts
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 {
   options.hostSpec = {
