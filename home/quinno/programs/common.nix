@@ -38,6 +38,8 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    nil
   ];
 
   programs = {

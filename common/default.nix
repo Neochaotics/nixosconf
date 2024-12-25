@@ -4,7 +4,6 @@
   config,
   lib,
   pkgs,
-  nixpkgs-unstable,
   ...
 }: {
   imports= lib.flatten [
@@ -23,7 +22,7 @@
   home-manager.backupFileExtension = "bk";
   home-manager.users.quinno = import ../home/quinno; #${hostSpec.username} = import ../home/${hostSpec.username};
   home-manager.extraSpecialArgs = {
-    inherit pkgs nixpkgs-unstable inputs;
+    inherit pkgs inputs;
     hostSpec = config.hostSpec;
   };
 
