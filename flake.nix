@@ -31,13 +31,13 @@
           let
             systemConfig = nixpkgs.lib.nixosSystem {
               specialArgs = { inherit inputs outputs; };
-              modules = [ ./hosts/${host} ];
+              modules = [ ./hosts/nixos/${host} ];
             };
           in
           acc // { ${host} = systemConfig; }
         )
         { }
-        (nixpkgs.lib.attrNames (builtins.readDir ./hosts));
+        (nixpkgs.lib.attrNames (builtins.readDir ./hosts/nixos));
     in
     {
       nixosConfigurations = hostConfigs;
