@@ -11,25 +11,25 @@
 
     extraConfig = {
       core = {
-        editor = nvim;
+        editor = "nvim";
       };
       color = {
-        diff = auto;
-        interactive = auto;
-        pager = true;
-        status = auto;
-        branch = auto;
-        ui = true;
+        diff = "auto";
+        interactive = "auto";
+        pager = "true";
+        status = "auto";
+        branch = "auto";
+        ui = "true";
       };
       rerere = {
-        enabled = true;
-        autoupdate = true;
+        enabled = "true";
+        autoupdate = "true";
       };
       rebase = {
-        autoSquash = true;
+        autoSquash = "true";
       };
-      push.default = upstream;
-      pull.rebase = true;
+      push.default = "upstream";
+      pull.rebase = "true";
     };
   };
 }
