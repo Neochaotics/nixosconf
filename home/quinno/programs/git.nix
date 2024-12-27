@@ -14,7 +14,6 @@
         editor = nvim;
       };
       color = {
-        branch = auto;
         diff = auto;
         interactive = auto;
         pager = true;
