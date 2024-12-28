@@ -47,7 +47,6 @@
   };
 
 
-
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -81,26 +80,9 @@
     #media-session.enable = true;
   };
 
-  users.users.quinno = {
-    isNormalUser = true;
-    description = "Quinn O";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-      #  thunderbird
-    ];
-  };
-
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "quinno";
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Use the systemd-boot EFI boot loader.
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
 
 
   time.timeZone = "America/New_York";
