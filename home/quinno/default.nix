@@ -1,4 +1,9 @@
-{
+{ inputs
+, lib
+, config
+, pkgs
+, ...
+}:{
   imports = [
     ./programs
   ];
