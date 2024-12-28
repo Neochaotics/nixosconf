@@ -1,4 +1,4 @@
-{
+{ lib, ... }:{
   imports = [
     ./browsers.nix
     ./common.nix
@@ -7,5 +7,5 @@
     ./xdg.nix
   ];
 
-  home.homeDirectory = "/home/quinno";
+  home.homeDirectory = lib.mkForce "/home/quinno";
 }
