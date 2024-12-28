@@ -16,7 +16,7 @@
     username = "quinno";
   };
 
-  users.users.${hostSpec.username}.isNormalUser
+  users.users.${hostSpec.username}.isNormalUser = true;
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "bk";
