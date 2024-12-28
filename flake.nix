@@ -14,6 +14,8 @@
     #disko.inputs.nixpkgs.follows = "nixpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
+
+    inputs.hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs =

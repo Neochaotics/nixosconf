@@ -7,6 +7,4 @@
     ./xdg.nix
     ./hyprland
   ];
-
-  home.homeDirectory = lib.mkForce "/home/quinno";
 }
