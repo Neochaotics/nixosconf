@@ -15,7 +15,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    inputs.hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs =
