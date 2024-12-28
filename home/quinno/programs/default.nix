@@ -6,4 +6,6 @@
     ./media.nix
     ./xdg.nix
   ];
+
+  home.homeDirectory = "/home/quinno";
 }
