@@ -42,6 +42,7 @@
         (nixpkgs.lib.attrNames (builtins.readDir ./hosts));
     in
     {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
       nixosConfigurations = hostConfigs;
     };
 }
