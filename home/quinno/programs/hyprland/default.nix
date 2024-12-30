@@ -5,8 +5,9 @@
 , pkgs
 , ...
 }: {
-    #extraConfig = builtins.readFile ./hyprland.conf;
-   wayland.windowManager.hyprland = {
+  #extraConfig = builtins.readFile ./hyprland.conf;
+  programs.hyprland.enable = true;
+  wayland.windowManager.hyprland = {
     enable = true;
     plugins = with pkgs; [ hyprlandPlugins.hyprtrails ];
     settings = {
@@ -68,7 +69,7 @@
           "$mod ALT, 8, movetoworkspace, 8"
           "CTRL ALT, 9, workspace, 9"
           "$mod ALT, 9, movetoworkspace, 9"
-      ];
+        ];
       # https://wiki.hyprland.org/Configuring/Variables/#animations
       animations = {
         enabled = true;
@@ -173,7 +174,7 @@
           bezier_step = 0.025; #0.025
           points_per_step = 2; #2
           history_points = 12; #20
-          history_step = 2;    #2
+          history_step = 2; #2
         };
       };
       windowrulev2 = [
