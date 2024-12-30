@@ -10,13 +10,18 @@
     inputs.impermanence.nixosModules.impermanence
     inputs.home-manager.nixosModules.home-manager
     ../modules/common
+    ./sudo.nix
   ];
 
   hostSpec = {
     username = "quinno";
   };
 
-  users.users.quinno.isNormalUser = true;
+  users.users.quinno = {
+    isNormalUser = true;
+    extraGroups = ["wheel"];
+    description = "Quinn O"
+  };
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "bk";
