@@ -5,6 +5,7 @@
 , pkgs
 , ...
 }: {
+  pkgs = nixpkgs.legacyPackages.x86_64-linux;
   wayland.windowManager.hyprland = {
     enable = true;
     systemd = {
