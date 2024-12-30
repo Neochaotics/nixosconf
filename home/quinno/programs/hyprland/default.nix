@@ -130,16 +130,6 @@
         extend_border_grab_area = 10;
         layout = "master";
       };
-      #https://wiki.hyprland.org/Configuring/Master-Layout/
-      master = {
-        mfact = if (hostname == "vader" || hostname == "phasma") then 0.5 else 0.55;
-        orientation = if hostname == "vader" then
-          "top"
-        else if hostname == "phasma" then
-          "center"
-        else
-          "left";
-      };
       # https://wiki.hyprland.org/Configuring/Dwindle-Layout/
       dwindle = {
         force_split = 1;
