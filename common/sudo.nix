@@ -1,6 +1,10 @@
-{ pkgs
+{ inputs
+, outputs
+, config
 , lib
-}: {
+, pkgs
+, ...
+}:{
   security.sudo.enable = false;
   security.sudo-rs = {
     enable = true;
