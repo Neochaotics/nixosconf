@@ -11,6 +11,7 @@
     inputs.home-manager.nixosModules.home-manager
     ../modules/common
     ./sudo.nix
+    ./hyprland.nix
   ];
 
   hostSpec = {
