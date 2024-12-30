@@ -6,7 +6,6 @@
 , ...
 }: {
   #extraConfig = builtins.readFile ./hyprland.conf;
-  programs.hyprland.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = with pkgs; [ hyprlandPlugins.hyprtrails ];
