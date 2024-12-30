@@ -10,7 +10,6 @@
     enable = true;
     plugins = with pkgs; [ hyprlandPlugins.hyprtrails ];
     settings = {
-      inherit (monitors) monitor workspace;
       "$mod" = "SUPER";
       # Work when input inhibitor (l) is active.
       bindl = [
