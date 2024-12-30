@@ -16,8 +16,8 @@
         "systemctl --user stop graphical-session.target"
         "systemctl --user start hyprland-session.target"
       ];
-      extraConfig = builtins.readFile ./hyprland.conf;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
+    extraConfig = builtins.readFile ./hyprland.conf;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
 }
