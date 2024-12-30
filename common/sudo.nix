@@ -5,7 +5,10 @@
 , pkgs
 , ...
 }:{
-  security.sudo.enable = false;
+  security.sudo = {
+    enable = lib.mkForce false;
+    extraConfig = lib.mkForce [ ];
+  };
   security.sudo-rs = {
     enable = true;
     execWheelOnly = true;
