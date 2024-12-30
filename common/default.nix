@@ -20,7 +20,7 @@
   users.users.quinno = {
     isNormalUser = true;
     extraGroups = ["wheel"];
-    description = "Quinn O"
+    description = "Quinn O";
   };
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
