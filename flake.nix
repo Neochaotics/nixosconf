@@ -23,6 +23,7 @@
     , nixpkgs
     , nixpkgs-stable
     , home-manager
+    , hyprland
     , ...
     } @ inputs:
     let
