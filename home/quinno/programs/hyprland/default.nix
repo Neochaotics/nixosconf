@@ -7,7 +7,7 @@
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
-    withSystemd = false;
+    systemd.enable = false;
     settings = {
       bind =
         [
