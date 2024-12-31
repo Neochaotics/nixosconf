@@ -16,28 +16,19 @@
     impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-stable
-    , home-manager
-    , ...
-    } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
-      hostConfigs = nixpkgs.lib.foldl
-        (acc: host:
-          let
-            systemConfig = nixpkgs.lib.nixosSystem {
-              specialArgs = { inherit inputs outputs; };
-              modules = [ ./hosts/${host} ];
-            };
-          in
-          acc // { ${host} = systemConfig; }
-        )
-        { }
-        (nixpkgs.lib.attrNames (builtins.readDir ./hosts));
+      hostConfigs = nixpkgs.lib.genAttrs (builtins.attrNames (builtins.readDir ./hosts)) (host:
+        let
+          systemConfig = nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs outputs; };
+            modules = [ ./hosts/${host} ];
+          };
+        in
+        { inherit systemConfig; }  # Return the system configuration
+      );
     in
     {
       nixosConfigurations = hostConfigs;
