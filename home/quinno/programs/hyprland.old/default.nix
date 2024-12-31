@@ -5,13 +5,11 @@
 , pkgs
 , ...
 }: {
-    imports = [
-    ./hyprland/keywords/hyprbinds.nix
-  ];
-  #wayland.windowManager.hyprland.settings
+  #wayland.windowManager.hyprland.extraConfig
   wayland.windowManager.hyprland = {
     enable = true;
     # plugins = with pkgs; [ hyprlandPlugins.hyprtrails ];
+    extraConfig = builtins.readFile ./hyprland.conf;
     systemd.enable = false;
     xwayland.enable = true;
   };
