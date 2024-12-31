@@ -6,7 +6,7 @@
 , ...
 }: {
     imports = [
-    ./hyprland/keywords/hyprbinds.nix
+    ./keywords/hyprbinds.nix
   ];
   #wayland.windowManager.hyprland.settings
   wayland.windowManager.hyprland = {
