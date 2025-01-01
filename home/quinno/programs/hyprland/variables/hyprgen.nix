@@ -6,8 +6,8 @@
       gaps_in = 6;
       gaps_out = 12;
       gaps_workspaces = 0;
-      col.active_border = "rgb($primaryContainer)"; # primaryContainer
-      col.inactive_border = "rgb($surfaceContainer)"; # surfaceContainer
+      "col.active_border" = "rgb($primaryContainer)"; # primaryContainer
+      "col.inactive_border" = "rgb($surfaceContainer)"; # surfaceContainer
       layout = "dwindle";
       no_focus_fallback = false;
       resize_on_border = true;
@@ -32,10 +32,10 @@
       merge_groups_on_groupbar = true;
       merge_floated_into_tiled_on_groupbar = true;
       group_on_movetoworkspace = false;
-      col.border_active = "rgb($secondaryContainer)"; # secondaryContainer
-      col.border_inactive = "rgb($surfaceContainer)"; # surfaceContainer
-      col.border_locked_active = "rgb($secondaryContainer)"; # secondaryContainer
-      col.border_locked_inactive = "rgb($surfaceContainer)"; # surfaceContainer
+      "col.border_active" = "rgb($secondaryContainer)"; # secondaryContainer
+      "col.border_inactive" = "rgb($surfaceContainer)"; # surfaceContainer
+      "col.border_locked_active" = "rgb($secondaryContainer)"; # secondaryContainer
+      "col.border_locked_inactive" = "rgb($surfaceContainer)"; # surfaceContainer
       groupbar = {
         enabled = true;
         # font_family=; # Defaults to misc:font_family
@@ -47,10 +47,10 @@
         render_titles = true;
         scrolling = true;
         text_color = "rgb($onBackground)"; # onBackground
-        col.active = "rgba(00000000)";
-        col.inactive = "rgba(00000000)";
-        col.locked_active = "rgba(00000000)";
-        col.locked_inactive = "rgba(00000000)";
+        "col.active" = "rgba(00000000)";
+        "col.inactive" = "rgba(00000000)";
+        "col.locked_active" = "rgba(00000000)";
+        "col.locked_inactive" = "rgba(00000000)";
       };
     };
   };

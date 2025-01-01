@@ -3,7 +3,7 @@
     misc = {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
-      col.splash = "rgb($onBackground)";
+      "col.splash" = "rgb($onBackground)";
       font_family = "$font";
       # splash_font_family=;
       force_default_wallpaper = 0;
