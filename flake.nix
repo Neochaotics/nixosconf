@@ -20,15 +20,18 @@
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
-      hostConfigs = nixpkgs.lib.genAttrs (builtins.attrNames (builtins.readDir ./hosts)) (host:
-        let
-          systemConfig = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs outputs; };
-            modules = [ ./hosts/${host} ];
-          };
-        in
-        { inherit systemConfig; }  # Return the system configuration
-      );
+      hostConfigs = nixpkgs.lib.foldl
+        (acc: host:
+          let
+            systemConfig = nixpkgs.lib.nixosSystem {
+              specialArgs = { inherit inputs outputs; };
+              modules = [ ./hosts/${host} ];
+            };
+          in
+          acc // { ${host} = systemConfig; }
+        )
+        { }
+        (nixpkgs.lib.attrNames (builtins.readDir ./hosts));
     in
     {
       nixosConfigurations = hostConfigs;
