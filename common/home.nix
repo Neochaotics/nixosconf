@@ -13,9 +13,9 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "bk";
-  home-manager.users.quinno = import ../home/quinno; #${hostSpec.username} = import ../home/${hostSpec.username};
+  home-manager.users.quinno = import ../home/quinno;
   home-manager.extraSpecialArgs = {
     inherit pkgs inputs;
-    hostSpec = config.hostSpec;
   };
+  services.getty.autologinUser = "quinno"
 }
