@@ -17,7 +17,7 @@
       animate_mouse_windowdragging = true;
       disable_autoreload = false;
       enable_swallow = true;
-      swallow_regex = foot;
+      swallow_regex = "foot";
       # swallow_exception_regex=;
       focus_on_activate = false;
       mouse_move_focuses_monitor = true;
