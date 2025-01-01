@@ -3,15 +3,15 @@
     bind = [
       # Program Launching
       # --------------------
-      "SUPER, R, exec, killall $launcher || uwsm app -- $launcher"
-      "SUPER, B, exec, uwsm app -- $browser:new-window"
-      "SUPER SHIFT, B, exec, uwsm app -- $browser:new-private-window"
-      "SUPER ALT, B, exec, uwsm app -- $altbrowser"
-      "SUPER ALT SHIFT, B, exec, uwsm app -- $altbrowser:new-private-window"
+      "SUPER, R, exec, killall fuzzle || uwsm app -- fuzzle"
+      "SUPER, B, exec, uwsm app -- firefox.desktop:new-window"
+      "SUPER SHIFT, B, exec, uwsm app -- firefox.desktop:new-private-window"
+      "SUPER ALT, B, exec, uwsm app -- $chromium.desktop"
+      "SUPER ALT SHIFT, B, exec, uwsm app -- $chromium.desktop:new-private-window"
       "SUPER, Return, exec, uwsm app -- $term"
-      "SUPER, E, exec, uwsm app -- $filemanager"
+      "SUPER, E, exec, uwsm app -- thunar.desktop"
       "SUPER, V, exec, uwsm app -- pavucontrol"
-      "SUPER, D, exec, uwsm app -- armcord"
+      "SUPER, D, exec, uwsm app -- legcord"
 
 
       # General Control
