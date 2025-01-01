@@ -9,11 +9,6 @@
     ../../common
   ];
 
-  hostSpec = {
-    hostName = "lilpc";
-    username = "quinno";
-  };
-
   # Bootloader.
   #boot.loader.grub.enable = true;
   #boot.loader.grub.device = "/dev/vda";
