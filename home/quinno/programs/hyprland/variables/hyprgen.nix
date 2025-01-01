@@ -7,7 +7,7 @@
       gaps_out = 12;
       gaps_workspaces = 0;
       "col.active_border" = "rgb(D34000)"; # primaryContainer
-      "col.inactive_border" = "rgb(2C1B16r)"; # surfaceContainer
+      "col.inactive_border" = "rgb(2C1B16)"; # surfaceContainer
       layout = "dwindle";
       no_focus_fallback = false;
       resize_on_border = true;
