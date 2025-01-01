@@ -19,6 +19,5 @@
     enable = true;
     systemd.enable = false;
     xwayland.enable = true;
-    extraConfig = builtins.readFile ./hyprconf.conf;
   };
 }
