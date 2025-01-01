@@ -33,7 +33,7 @@
       merge_floated_into_tiled_on_groupbar = true;
       group_on_movetoworkspace = false;
       col.border_active = "rgb($secondaryContainer)"; # secondaryContainer
-      col.border_inactive = rgb "($surfaceContainer)"; # surfaceContainer
+      col.border_inactive = "rgb($surfaceContainer)"; # surfaceContainer
       col.border_locked_active = "rgb($secondaryContainer)"; # secondaryContainer
       col.border_locked_inactive = "rgb($surfaceContainer)"; # surfaceContainer
       groupbar = {
