@@ -6,8 +6,8 @@
       gaps_in = 6;
       gaps_out = 12;
       gaps_workspaces = 0;
-      "col.active_border" = "rgb($primaryContainer)"; # primaryContainer
-      "col.inactive_border" = "rgb($surfaceContainer)"; # surfaceContainer
+      "col.active_border" = "rgb(D34000)"; # primaryContainer
+      "col.inactive_border" = "rgb(2C1B16r)"; # surfaceContainer
       layout = "dwindle";
       no_focus_fallback = false;
       resize_on_border = true;
@@ -32,10 +32,10 @@
       merge_groups_on_groupbar = true;
       merge_floated_into_tiled_on_groupbar = true;
       group_on_movetoworkspace = false;
-      "col.border_active" = "rgb($secondaryContainer)"; # secondaryContainer
-      "col.border_inactive" = "rgb($surfaceContainer)"; # surfaceContainer
-      "col.border_locked_active" = "rgb($secondaryContainer)"; # secondaryContainer
-      "col.border_locked_inactive" = "rgb($surfaceContainer)"; # surfaceContainer
+      "col.border_active" = "rgb(782100)"; # secondaryContainer
+      "col.border_inactive" = "rgb(2C1B16)"; # surfaceContainer
+      "col.border_locked_active" = "rgb(782100)"; # secondaryContainer
+      "col.border_locked_inactive" = "rgb(2C1B16)"; # surfaceContainer
       groupbar = {
         enabled = true;
         # font_family=; # Defaults to misc:font_family
@@ -46,7 +46,7 @@
         priority = 3;
         render_titles = true;
         scrolling = true;
-        text_color = "rgb($onBackground)"; # onBackground
+        text_color = "rgb(FBDCD3)"; # onBackground
         "col.active" = "rgba(00000000)";
         "col.inactive" = "rgba(00000000)";
         "col.locked_active" = "rgba(00000000)";

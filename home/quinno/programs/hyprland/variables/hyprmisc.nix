@@ -3,8 +3,8 @@
     misc = {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
-      "col.splash" = "rgb($onBackground)";
-      font_family = "$font";
+      "col.splash" = "rgb(FBDCD3)";
+      # font_family = "Iosevka Nerd Font";
       # splash_font_family=;
       force_default_wallpaper = 0;
       vfr = true; # Heavily recommended to leave enabled to conserve resources.
@@ -24,7 +24,7 @@
       render_ahead_of_time = false; # [Warning: buggy] starts rendering before your monitor displays a frame in order to lower latency
       render_ahead_safezone = 1; # how many ms of safezone to add to rendering ahead of time. Recommended 1-2.
       allow_session_lock_restore = false;
-      background_color = "rgb($background)";
+      background_color = "rgb(1F0F0B)";
       close_special_on_empty = true;
       new_window_takes_over_fullscreen = 2;
       exit_window_retains_fullscreen = false;
