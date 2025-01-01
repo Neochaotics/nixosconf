@@ -7,7 +7,13 @@
   };
   programs.hyprland = {
     enable = true;
-    withUWSM = true; # recommended for most users
-    xwayland.enable = true; # Xwayland can be disabled.
+    withUWSM = true;
+    xwayland.enable = true;
   };
+
+  programs.bash.initExtra = ''
+    if uwsm check may-start; then
+      exec uwsm start -S hyprland-uwsm.desktop
+    fi
+  '';
 }
