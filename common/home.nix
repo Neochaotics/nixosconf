@@ -17,5 +17,5 @@
   home-manager.extraSpecialArgs = {
     inherit pkgs inputs;
   };
-  services.getty.autologinUser = "quinno"
+  services.getty.autologinUser = "quinno";
 }
