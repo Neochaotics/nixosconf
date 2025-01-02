@@ -28,8 +28,8 @@ in
         "NTPCustomBackgroundEnabled" = false;
         "NTPMiddleSlotAnnouncementVisible" = false;
         # Misc; Downloads
-        "DefaultDownloadDirectory" = "/home/${username}/Downloads";
-        "DownloadDirectory" = "/home/${username}/Downloads";
+        "DefaultDownloadDirectory" = "${homeDir}/Downloads";
+        "DownloadDirectory" = "${homeDir}/Downloads";
         "PromptForDownloadLocation" = true;
         # Misc
         "AllowSystemNotifications" = true;
