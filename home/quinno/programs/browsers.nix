@@ -4,7 +4,7 @@
 }:
 let
 
-  core_extensions = [
+  core_extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     ublock-origin
     darkreader
     vimium
@@ -28,8 +28,7 @@ in
     firefox = {
       enable = true;
       profiles.main = {
-        extensions = with pkgs.nur.repos.rycee.firefox-addons;
-          core_extensions;
+        extensions = core_extensions;
       };
     };
   };
