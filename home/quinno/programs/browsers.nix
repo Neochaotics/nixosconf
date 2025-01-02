@@ -4,7 +4,7 @@
 }:
 let
 
-  core_extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+  core_extensions = with inputs.nur.repos.rycee.firefox-addons; [
     ublock-origin
     darkreader
     vimium
