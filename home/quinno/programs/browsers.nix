@@ -1,7 +1,22 @@
 { pkgs
 , config
 , ...
-}: {
+}:
+let
+
+  core_extensions = [
+    ublock-origin
+    darkreader
+    vimium
+    decentraleyes
+    user-agent-string-switcher
+    violentmonkey
+    stylus
+    bitwarden
+  ];
+
+in
+{
   programs = {
     chromium = {
       enable = true;
@@ -12,7 +27,10 @@
 
     firefox = {
       enable = true;
-      profiles.quinno = { };
+      profiles.main = {
+        extensions = with pkgs.nur.repos.rycee.firefox-addons;
+          core_extensions;
+      };
     };
   };
 }
