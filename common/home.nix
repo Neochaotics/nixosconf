@@ -18,4 +18,5 @@
     inherit pkgs inputs;
   };
   services.getty.autologinUser = "quinno";
+  services.getty.autologinOnce = true;
 }
