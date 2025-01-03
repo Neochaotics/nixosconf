@@ -25,7 +25,7 @@ in
         "AutofillCreditCardEnabled" = false;
         "BackgroundAppUpdate" = false;
         "BlockAboutAddons" = true;
-        "BlockAboutConfig" = true;
+        "BlockAboutConfig" = false;
         "BlockAboutProfiles" = true;
         "BlockAboutSupport" = true;
         "CaptivePortal" = true;
