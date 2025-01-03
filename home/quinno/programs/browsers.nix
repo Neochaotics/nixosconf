@@ -7,7 +7,7 @@ let
   homeDir = config.home.homeDirectory;
 in
 {
-  mimeApps.defaultApplications = {
+  xdg.mimeApps.defaultApplications = {
     "text/html" = [ "firefox.desktop" "chromium.desktop" ];
     "x-scheme-handler/http" = [ "firefox.desktop" "chromium.desktop" ];
     "x-scheme-handler/https" = [ "firefox.desktop" "chromium.desktop" ];
