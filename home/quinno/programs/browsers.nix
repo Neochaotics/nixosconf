@@ -11,31 +11,6 @@ in
     # - https://mozilla.github.io/policy-templates/
     firefox = {
       enable = true;
-      preferences = {
-        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
-        "browser.crashReports.unsubmittedCheck.enabled" = false;
-        "browser.fixup.dns_first_for_single_words" = false;
-        "browser.newtab.extensionControlled" = true;
-        "browser.search.update" = true;
-        "browser.tabs.crashReporting.sendReport" = false;
-        "browser.urlbar.suggest.bookmark" = false;
-        "browser.urlbar.suggest.history" = true;
-        "browser.urlbar.suggest.openpage" = false;
-        "browser.tabs.warnOnClose" = false;
-        "browser.urlbar.update2.engineAliasRefresh" = true;
-        "datareporting.policy.dataSubmissionPolicyBypassNotification" = true;
-        "dom.disable_window_flip" = true;
-        "dom.disable_window_move_resize" = false;
-        "dom.event.contextmenu.enabled" = true;
-        "dom.reporting.crash.enabled" = false;
-        "extensions.getAddons.showPane" = false;
-        "media.gmp-gmpopenh264.enabled" = true;
-        "media.gmp-widevinecdm.enabled" = true;
-        "places.history.enabled" = true;
-        "security.ssl.errorReporting.enabled" = false;
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
-      };
-      preferencesStatus = "default";
       policies = {
         "AutofillAddressEnabled" = false;
         "AutofillCreditCardEnabled" = false;
