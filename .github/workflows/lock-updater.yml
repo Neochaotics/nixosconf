@@ -1,4 +1,4 @@
-name: Flake ❄️ Lock 🔒️ Updater ✨
+name: Flake Lock Update
 
 on:
   schedule:
