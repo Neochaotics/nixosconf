@@ -125,36 +125,36 @@ in
           "Autoplay" = {
             "Default" = "block-audio-video";
             "Locked" = true;
-          }
-            };
-          "PictureInPicture" = {
-            "Enabled" = false;
-            "Locked" = true;
           };
-          "PostQuantumKeyAgreementEnabled" = true;
-          "SearchBar" = "unified";
-          "SearchSuggestEnabled" = false;
-          "ShowHomeButton" = false;
-          "StartDownloadsInTempDirectory" = true;
-          "SanitizeOnShutdown" = {
-            "Cache" = true;
-            "Cookies" = true;
-            "History" = true;
-            "Sessions" = true;
-            "SiteSettings" = true;
-            "Locked" = true;
-          };
-          "UserMessaging" = {
-            "WhatsNew" = false;
-            "ExtensionRecommendations" = true;
-            "FeatureRecommendations" = false;
-            "UrlbarInterventions" = false;
-            "SkipOnboarding" = true;
-            "MoreFromMozilla" = false;
-            "Locked" = true;
-          };
-          "UseSystemPrintDialog" = true;
         };
+        "PictureInPicture" = {
+          "Enabled" = false;
+          "Locked" = true;
+        };
+        "PostQuantumKeyAgreementEnabled" = true;
+        "SearchBar" = "unified";
+        "SearchSuggestEnabled" = false;
+        "ShowHomeButton" = false;
+        "StartDownloadsInTempDirectory" = true;
+        "SanitizeOnShutdown" = {
+          "Cache" = true;
+          "Cookies" = true;
+          "History" = true;
+          "Sessions" = true;
+          "SiteSettings" = true;
+          "Locked" = true;
+        };
+        "UserMessaging" = {
+          "WhatsNew" = false;
+          "ExtensionRecommendations" = true;
+          "FeatureRecommendations" = false;
+          "UrlbarInterventions" = false;
+          "SkipOnboarding" = true;
+          "MoreFromMozilla" = false;
+          "Locked" = true;
+        };
+        "UseSystemPrintDialog" = true;
       };
     };
-  }
+  };
+}
