@@ -13,7 +13,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "bk";
-  home-manager.users.quinno = import ../home/quinno;
+  home-manager.users.quinno = import ../../home/quinno;
   home-manager.extraSpecialArgs = {
     inherit pkgs inputs;
   };
