@@ -11,7 +11,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./pkgs/sudo.nix
     ./pkgs/hyprland.nix
-    ./nix.nix
-    ./home.nix
+    ./common/nix.nix
+    ./common/home.nix
   ];
 }
