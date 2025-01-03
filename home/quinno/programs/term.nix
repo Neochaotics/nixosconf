@@ -6,10 +6,9 @@
 
       font = "Fira Code:size=11";
       dpi-aware = "yes";
-    };
-
-    mouse = {
-      hide-when-typing = "yes";
+      mouse = {
+        hide-when-typing = "yes";
+      };
     };
   };
 }
