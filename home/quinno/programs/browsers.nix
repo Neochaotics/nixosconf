@@ -342,18 +342,6 @@ in
             Value = true;
             Status = "locked";
           };
-          "browser.safebrowsing.allowOverride" = {
-            Value = false;
-            Status = "locked";
-          };
-          "browser.safebrowsing.allowOverride" = {
-            Value = false;
-            Status = "locked";
-          };
-          "browser.safebrowsing.allowOverride" = {
-            Value = false;
-            Status = "locked";
-          };
         };
         "UseSystemPrintDialog" = true;
       };
