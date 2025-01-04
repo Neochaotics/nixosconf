@@ -13,7 +13,6 @@
       "SUPER, V, exec, uwsm app -- pavucontrol"
       "SUPER, D, exec, uwsm app -- legcord"
 
-
       # General Control
       # --------------------
       "SUPER CTRL ALT, P, exec, systemctl poweroff"

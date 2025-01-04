@@ -1,7 +1,5 @@
-{ inputs,
-  pkgs,
-  ...
-}:{
+{ inputs, pkgs, ... }:
+{
   users.users.quinno = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -11,9 +9,7 @@
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "bk";
   home-manager.users.quinno = import ../../home/quinno;
-  home-manager.extraSpecialArgs = {
-    inherit pkgs inputs;
-  };
+  home-manager.extraSpecialArgs = { inherit pkgs inputs; };
   services.getty.autologinUser = "quinno";
   services.getty.autologinOnce = true;
 }

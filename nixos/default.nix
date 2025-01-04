@@ -1,7 +1,5 @@
-{ inputs,
-  lib,
-  ...
-}: {
+{ inputs, lib, ... }:
+{
   imports = lib.flatten [
     inputs.disko.nixosModules.disko
     inputs.impermanence.nixosModules.impermanence

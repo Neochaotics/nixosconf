@@ -1,6 +1,8 @@
-{ lib,
+{
+  lib,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../../nixos
@@ -56,7 +58,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
 
   time.timeZone = "America/New_York";
 

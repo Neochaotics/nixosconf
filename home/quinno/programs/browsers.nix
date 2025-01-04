@@ -1,4 +1,5 @@
-{config,
+{
+  config,
   ...
 }:
 let
@@ -6,11 +7,26 @@ let
 in
 {
   xdg.mimeApps.defaultApplications = {
-    "text/html" = [ "firefox.desktop" "chromium.desktop" ];
-    "x-scheme-handler/http" = [ "firefox.desktop" "chromium.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" "chromium.desktop" ];
-    "x-scheme-handler/about" = [ "firefox.desktop" "chromium.desktop" ];
-    "x-scheme-handler/unknown" = [ "firefox.desktop" "chromium.desktop" ];
+    "text/html" = [
+      "firefox.desktop"
+      "chromium.desktop"
+    ];
+    "x-scheme-handler/http" = [
+      "firefox.desktop"
+      "chromium.desktop"
+    ];
+    "x-scheme-handler/https" = [
+      "firefox.desktop"
+      "chromium.desktop"
+    ];
+    "x-scheme-handler/about" = [
+      "firefox.desktop"
+      "chromium.desktop"
+    ];
+    "x-scheme-handler/unknown" = [
+      "firefox.desktop"
+      "chromium.desktop"
+    ];
   };
 
   programs = {
