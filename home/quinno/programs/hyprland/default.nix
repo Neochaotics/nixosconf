@@ -1,10 +1,4 @@
-{ inputs
-, outputs
-, config
-, lib
-, pkgs
-, ...
-}: {
+{
   imports = [
     ./variables/hyprgen.nix
     ./variables/hyprappearance.nix

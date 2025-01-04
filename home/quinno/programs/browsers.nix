@@ -1,7 +1,5 @@
-{ inputs
-, pkgs
-, config
-, ...
+{config,
+  ...
 }:
 let
   homeDir = config.home.homeDirectory;

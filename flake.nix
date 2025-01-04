@@ -17,7 +17,6 @@
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs:
     let
       inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
       hostConfigs = nixpkgs.lib.foldl
         (acc: host:
           let

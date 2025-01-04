@@ -3,7 +3,7 @@ name: Flake Lock Update
 on:
   schedule:
     # Pi o'clock
-    - cron: '0 8 * * 1,5'
+    - cron: "0 8 * * 1,5"
   workflow_dispatch:
 
 jobs:

@@ -1,9 +1,6 @@
-{ inputs
-, outputs
-, config
-, lib
-, pkgs
-, ...
+{ inputs,
+  lib,
+  ...
 }: {
   imports = lib.flatten [
     inputs.disko.nixosModules.disko

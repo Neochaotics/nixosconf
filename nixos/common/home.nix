@@ -1,9 +1,6 @@
-{ inputs
-, outputs
-, config
-, lib
-, pkgs
-, ...
+{ inputs,
+  pkgs,
+  ...
 }:{
   users.users.quinno = {
     isNormalUser = true;

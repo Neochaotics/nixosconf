@@ -1,9 +1,6 @@
-{ inputs
-, outputs
-, config
-, lib
-, pkgs
-, ...
+{ lib,
+  pkgs,
+  ...
 }:{
   security.sudo = {
     enable = lib.mkForce false;

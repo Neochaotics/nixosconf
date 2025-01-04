@@ -1,4 +1,4 @@
-{ lib, ... }:{
+{
   imports = [
     ./browsers.nix
     ./common.nix
