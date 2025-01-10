@@ -8,5 +8,6 @@
     ./pkgs/hyprland.nix
     ./common/nix.nix
     ./common/home.nix
+    ./common/minimal.nix
   ];
 }
