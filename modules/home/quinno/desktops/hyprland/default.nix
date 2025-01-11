@@ -1,4 +1,10 @@
-{
+{ lib, config, ...}:
+let cfg = config.hyprland; in {
+  options = {
+    hyprland.enable = lib.mkEnableOption "Enable Quinn's Hyprland's configuration";
+  };
+
+  config = lib.mkIf cfg.enable {
   imports = [
     ./variables/hyprgen.nix
     ./variables/hyprappearance.nix
@@ -20,4 +26,5 @@
       exec uwsm start -S hyprland-uwsm.desktop
     fi
   '';
+  };
 }
