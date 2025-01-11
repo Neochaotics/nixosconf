@@ -1,8 +1,8 @@
-{nixpkgs, ...}: {
+{modulesPath, ...}: {
   imports = [
     # <nixpkgs/nixos/modules/profiles/minimal.nix>
     # <nixpkgs/nixos/modules/profiles/hardened.nix>
-    nixpkgs.nixosModules.minimal
+    (modulesPath + "/profiles/minimal.nix")
 
   ];
   boot.initrd.includeDefaultModules = false;
