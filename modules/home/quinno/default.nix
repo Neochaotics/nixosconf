@@ -5,6 +5,7 @@
 {
   imports = [
     ./programs
+    ./desktops/hyprland
   ];
   home.stateVersion = "24.05";
   home.username = "quinno"; # ${hostSpec.username};
