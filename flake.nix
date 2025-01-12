@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,7 +44,6 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs hostname;
-            pkgs-stable = import nixpkgs-stable { inherit system; };
           };
           modules = [ ./hosts/${hostname} ];
         }
@@ -50,13 +54,7 @@
       nixosConfigurations = hostConfigs;
 
       # Development shell
-      devShells.${system}.default = pkgs.mkShell {
-        packages = with pkgs; [
-          nil
-          nixfmt-rfc-style
-          statix
-        ];
-      };
+      devShells.${system}.default = import ./shell.nix;
 
       # Formatter configuration
       formatter.${system} = pkgs.nixfmt-rfc-style;
