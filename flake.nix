@@ -54,7 +54,7 @@
       nixosConfigurations = hostConfigs;
 
       # Development shell
-      devShells.${system}.default = import ./shell.nix;
+      devShells.${system}.default = (import ./shell.nix { inherit pkgs; });
 
       # Formatter configuration
       formatter.${system} = pkgs.nixfmt-rfc-style;
