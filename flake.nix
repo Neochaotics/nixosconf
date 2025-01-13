@@ -24,6 +24,7 @@
     devshell.url = "github:numtide/devshell";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-root.url = "github:srid/flake-root";
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
@@ -34,6 +35,7 @@
         inputs.treefmt-nix.flakeModule
         inputs.devshell.flakeModule
         inputs.flake-root.flakeModule
+        inputs.git-hooks-nix.flakeModule
       ];
       perSystem =
         { config, pkgs, ... }:
@@ -59,6 +61,16 @@
                 pkgs.nil # Nix Language Server
                 config.treefmt.build.wrapper # treefmt wrapper with config
               ] ++ (pkgs.lib.attrValues config.treefmt.build.programs); # treefmt programs
+            };
+          };
+          pre-commit.settings.hooks = {
+            treefmt = {
+              enable = true;
+              package = config.treefmt.build.wrapper;
+            };
+            statix = {
+              enable = true;
+              package = config.treefmt.build.programs.statix;
             };
           };
         };
