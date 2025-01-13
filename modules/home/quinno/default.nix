@@ -9,8 +9,8 @@
   ];
   home = {
     stateVersion = "24.05";
-  username = "quinno"; # ${hostSpec.username};
-  homeDirectory = lib.mkForce "/home/quinno";
+    username = "quinno"; # ${hostSpec.username};
+    homeDirectory = lib.mkForce "/home/quinno";
   };
   programs.home-manager.enable = true;
 }

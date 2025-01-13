@@ -5,16 +5,16 @@
 
   boot = {
     initrd.availableKernelModules = [
-    "xhci_pci"
-    "ohci_pci"
-    "ehci_pci"
-    "virtio_pci"
-    "ahci"
-    "usbhid"
-    "sr_mod"
-    "virtio_blk"
-  ];
-  kernelModules = [ "kvm-amd" ];
+      "xhci_pci"
+      "ohci_pci"
+      "ehci_pci"
+      "virtio_pci"
+      "ahci"
+      "usbhid"
+      "sr_mod"
+      "virtio_blk"
+    ];
+    kernelModules = [ "kvm-amd" ];
   };
 
   fileSystems."/" = {
