@@ -25,44 +25,45 @@
     flake-root.url = "github:srid/flake-root";
   };
 
-  outputs = inputs@{ flake-parts, nixpkgs, ... }:
+  outputs =
+    inputs@{ flake-parts, nixpkgs, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
       imports = [
         inputs.treefmt-nix.flakeModule
         inputs.flake-root.flakeModule
       ];
-      perSystem = { config, pkgs, ... }:{
-        # Development shell configuration
-        devShells.default = import ./shell.nix { inherit pkgs; };
+      perSystem =
+        { config, pkgs, ... }:
+        {
+          # Development shell configuration
+          devShells.default = import ./shell.nix { inherit pkgs; };
 
-        treefmt.config = {
-          inherit (config.flake-root) projectRootFile;
+          treefmt.config = {
+            inherit (config.flake-root) projectRootFile;
 
-          programs = {
-            nixfmt.enable = true;
-            statix.enable = true;
-            actionlint.enable = true;
+            programs = {
+              nixfmt.enable = true;
+              statix.enable = true;
+              actionlint.enable = true;
+            };
           };
         };
+        flake = { system, ...}: {
+          nixosConfigurations = let
+            # Load all hosts from the hosts directory
+            hostNames = builtins.attrNames (builtins.readDir ./hosts);
 
-      };
-
-      flake = { system, ...}: {
-        nixosConfigurations = let
-          # Load all hosts from the hosts directory
-          hostNames = builtins.attrNames (builtins.readDir ./hosts);
-
-          mkHost = hostname:
-            nixpkgs.lib.nixosSystem {
-              specialArgs = {
-                inherit inputs hostname system;
-                outputs = inputs.self;
+            mkHost = hostname:
+              nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                  inherit inputs hostname system;
+                  outputs = inputs.self;
+                };
+                modules = [ ./hosts/${hostname} ];
               };
-              modules = [ ./hosts/${hostname} ];
-            };
-        in
-          nixpkgs.lib.genAttrs hostNames mkHost;
-      };
+          in
+            nixpkgs.lib.genAttrs hostNames mkHost;
+        };
     };
 }
