@@ -2,7 +2,7 @@
 {
   imports = [
     (modulesPath + "/profiles/minimal.nix")
-    (modulesPath + "/profiles/hardened.nix")
+    #(modulesPath + "/profiles/hardened.nix")
 
   ];
   boot.initrd.includeDefaultModules = false;
