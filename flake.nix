@@ -21,6 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    devshell.url = "github:numtide/devshell";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-root.url = "github:srid/flake-root";
   };
@@ -31,14 +32,12 @@
       systems = [ "x86_64-linux" ];
       imports = [
         inputs.treefmt-nix.flakeModule
+        inputs.devshell.flakeModule
         inputs.flake-root.flakeModule
       ];
       perSystem =
         { config, pkgs, ... }:
         {
-          # Development shell configuration
-          devShells.default = import ./shell.nix { inherit pkgs config; };
-
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
 
@@ -51,13 +50,26 @@
               mdformat.enable = true; # Format markdown (e.g. README.md :) )
             };
           };
+
+          devshells = {
+            default = {
+              name = "nixdev";
+              motd = "";
+              packages = [
+                pkgs.nil # Nix Language Server
+                config.treefmt.build.wrapper # treefmt wrapper with config
+              ] ++ (pkgs.lib.attrValues config.treefmt.build.programs); # treefmt programs
+            };
+          };
         };
-        flake = {...}: {
-          nixosConfigurations = let
+      flake = _: {
+        nixosConfigurations =
+          let
             # Load all hosts from the hosts directory
             hostNames = builtins.attrNames (builtins.readDir ./hosts);
 
-            mkHost = hostname:
+            mkHost =
+              hostname:
               nixpkgs.lib.nixosSystem {
                 specialArgs = {
                   inherit inputs hostname;
@@ -66,7 +78,7 @@
                 modules = [ ./hosts/${hostname} ];
               };
           in
-            nixpkgs.lib.genAttrs hostNames mkHost;
-        };
+          nixpkgs.lib.genAttrs hostNames mkHost;
+      };
     };
 }
