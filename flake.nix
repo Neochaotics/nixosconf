@@ -49,7 +49,7 @@
             };
           };
         };
-        flake = { system, ...}: {
+        flake = {...}: {
           nixosConfigurations = let
             # Load all hosts from the hosts directory
             hostNames = builtins.attrNames (builtins.readDir ./hosts);
@@ -57,7 +57,7 @@
             mkHost = hostname:
               nixpkgs.lib.nixosSystem {
                 specialArgs = {
-                  inherit inputs hostname system;
+                  inherit inputs hostname;
                   outputs = inputs.self;
                 };
                 modules = [ ./hosts/${hostname} ];
