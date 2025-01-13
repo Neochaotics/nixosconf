@@ -16,55 +16,41 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
-
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     treefmt-nix.url = "github:numtide/treefmt-nix";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-root.url = "github:srid/flake-root";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nixpkgs-stable,
-      home-manager,
-      treefmt-nix,
-      flake-parts,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
-      system = "x86_64-linux";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        hostPlatform = {
-          system = "aarch64-linux";
-        };
-        config.allowUnfree = true;
+  outputs = inputs@{ flake-parts, nixpkgs, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
+      imports = [
+        inputs.treefmt-nix.flakeModule
+      ];
+      perSystem = { pkgs, ... }: {
+        # Development shell configuration
+        devShells.default = import ./shell.nix { inherit pkgs; };
       };
 
-      # Load all hosts from the hosts directory
-      hostNames = builtins.attrNames (builtins.readDir ./hosts);
-      hostConfigs = nixpkgs.lib.genAttrs hostNames (
-        hostname:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs hostname;
-          };
-          modules = [ ./hosts/${hostname} ];
-        }
-      );
-    in
-    {
-      # NixOS configurations
-      nixosConfigurations = hostConfigs;
+      flake = { system, ...}: {
+        nixosConfigurations = let
+          # Load all hosts from the hosts directory
+          hostNames = builtins.attrNames (builtins.readDir ./hosts);
 
-      # Development shell
-      devShells.${system}.default = (import ./shell.nix { inherit pkgs; });
+          mkHost = hostname:
+            nixpkgs.lib.nixosSystem {
+              specialArgs = {
+                inherit inputs hostname system;
+                outputs = inputs.self;
+              };
+              modules = [ ./hosts/${hostname} ];
+            };
+        in
+          nixpkgs.lib.genAttrs hostNames mkHost;
+      };
     };
 }
