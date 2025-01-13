@@ -30,10 +30,22 @@
       systems = [ "x86_64-linux" ];
       imports = [
         inputs.treefmt-nix.flakeModule
+        inputs.flake-root.flakeModule
       ];
-      perSystem = { pkgs, ... }: {
+      perSystem = { config, pkgs, ... }:{
         # Development shell configuration
         devShells.default = import ./shell.nix { inherit pkgs; };
+
+        treefmt.config = {
+          inherit (config.flake-root) projectRootFile;
+
+          programs = {
+            nixfmt.enable = true;
+            statix.enable = true;
+            actionlint.enable = true;
+          };
+        };
+
       };
 
       flake = { system, ...}: {
