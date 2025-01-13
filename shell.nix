@@ -1,11 +1,12 @@
 {
   pkgs ? import <nixpkgs> { },
+  config,
 }:
 
 pkgs.mkShell {
-  packages = with pkgs; [
-    nil
-    nixfmt-rfc-style
-    statix
+  name = "nixosconf";
+  packages = [
+    pkgs.nil
+    config.treefmt.build.wrapper
   ];
 }

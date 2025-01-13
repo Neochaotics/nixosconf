@@ -37,16 +37,18 @@
         { config, pkgs, ... }:
         {
           # Development shell configuration
-          devShells.default = import ./shell.nix { inherit pkgs; };
+          devShells.default = import ./shell.nix { inherit pkgs config; };
 
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
 
             programs = {
-              nixfmt-rfc-style.enable = true;
-              statix.enable = true;
-              deadnix.enable = true; #
-              actionlint.enable = true;
+              nixfmt.enable = true; # Format nix code
+              nixfmt.package = pkgs.nixfmt-rfc-style;
+              statix.enable = true; # Static analysis of nix code
+              deadnix.enable = true; # Scan for dead nix code
+              actionlint.enable = true; # Lint github actions
+              mdformat.enable = true; # Format markdown (e.g. README.md :) )
             };
           };
         };
