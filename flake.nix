@@ -43,8 +43,9 @@
             inherit (config.flake-root) projectRootFile;
 
             programs = {
-              nixfmt.enable = true;
+              nixfmt-rfc-style.enable = true;
               statix.enable = true;
+              deadnix.enable = true; #
               actionlint.enable = true;
             };
           };
