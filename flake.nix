@@ -43,6 +43,8 @@
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
 
+            flakeCheck = false;
+
             programs = {
               nixfmt.enable = true; # Format nix code
               nixfmt.package = pkgs.nixfmt-rfc-style;
