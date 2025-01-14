@@ -5,6 +5,7 @@
     # Core Nix dependencies
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main"
 
     # System and state management
     home-manager = {
