@@ -33,7 +33,8 @@
     flake-root.url = "github:srid/flake-root";
   };
 
-  outputs = inputs@{ flake-parts, nixpkgs, ... }:
+  outputs =
+    inputs@{ flake-parts, nixpkgs, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
@@ -44,60 +45,65 @@
         inputs.git-hooks-nix.flakeModule
       ];
 
-      perSystem = { config, pkgs, ... }: {
-        # Code formatting and linting configuration
-        treefmt.config = {
-          inherit (config.flake-root) projectRootFile;
-          flakeCheck = false;
-          programs = {
-            # Nix-specific tools
-            nixfmt = {
-              enable = true;
-              package = pkgs.nixfmt-rfc-style;
+      perSystem =
+        { config, pkgs, ... }:
+        {
+          # Code formatting and linting configuration
+          treefmt.config = {
+            inherit (config.flake-root) projectRootFile;
+            flakeCheck = false;
+            programs = {
+              # Nix-specific tools
+              nixfmt = {
+                enable = true;
+                package = pkgs.nixfmt-rfc-style;
+              };
+              statix.enable = true;
+              deadnix.enable = true;
+              # Other formatting tools
+              actionlint.enable = true;
+              mdformat.enable = true;
             };
-            statix.enable = true;
-            deadnix.enable = true;
-            # Other formatting tools
-            actionlint.enable = true;
-            mdformat.enable = true;
           };
-        };
 
-        # Development shell configuration
-        devshells.default = {
-          name = "nixdev";
-          motd = "";
-          packages = [
-            pkgs.nil # Nix Language Server
-            config.treefmt.build.wrapper
-          ] ++ (pkgs.lib.attrValues config.treefmt.build.programs);
-        };
+          # Development shell configuration
+          devshells.default = {
+            name = "nixdev";
+            motd = "";
+            packages = [
+              pkgs.nil # Nix Language Server
+              config.treefmt.build.wrapper
+            ] ++ (pkgs.lib.attrValues config.treefmt.build.programs);
+          };
 
-        # Pre-commit hooks configuration
-        pre-commit.settings.hooks = {
-          treefmt = {
-            enable = true;
-            package = config.treefmt.build.wrapper;
-          };
-          statix = {
-            enable = true;
-            package = config.treefmt.build.programs.statix;
+          # Pre-commit hooks configuration
+          pre-commit.settings.hooks = {
+            treefmt = {
+              enable = true;
+              package = config.treefmt.build.wrapper;
+            };
+            statix = {
+              enable = true;
+              package = config.treefmt.build.programs.statix;
+            };
           };
         };
-      };
 
       # NixOS system configurations
       flake = _: {
-        nixosConfigurations = let
-          hostNames = builtins.attrNames (builtins.readDir ./hosts);
-          mkHost = hostname: nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs hostname;
-              outputs = inputs.self;
-            };
-            modules = [ ./hosts/${hostname} ];
-          };
-        in
+        nixosConfigurations =
+          let
+            hostNames = builtins.attrNames (builtins.readDir ./hosts);
+            mkHost =
+              hostname:
+              nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                  inherit inputs hostname;
+                  outputs = inputs.self;
+                };
+                modules = [ ./hosts/${hostname} ];
+              };
+          in
           nixpkgs.lib.genAttrs hostNames mkHost;
       };
     };

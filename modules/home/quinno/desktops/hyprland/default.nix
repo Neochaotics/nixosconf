@@ -1,10 +1,10 @@
 { lib, config, ... }:
 let
-  cfg = config.hyprland;
+  cfg = config.quinno.desktops.hyprland;
 in
 {
   options = {
-    hyprland.enable = lib.mkEnableOption "Enable Quinn's Hyprland's configuration";
+    quinno.desktops.hyprland.enable = lib.mkEnableOption "Enable Quinn's Hyprland's configuration";
   };
 
   config = lib.mkIf cfg.enable {

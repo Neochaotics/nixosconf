@@ -13,4 +13,5 @@
     homeDirectory = lib.mkForce "/home/quinno";
   };
   programs.home-manager.enable = true;
+  quinno.desktops.hyprland.enable = true;
 }
