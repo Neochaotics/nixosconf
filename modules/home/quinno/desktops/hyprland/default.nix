@@ -23,11 +23,5 @@ in
       systemd.enable = false;
       xwayland.enable = true;
     };
-
-    programs.bash.initExtra = ''
-      if uwsm check may-start; then
-        exec uwsm start -S hyprland-uwsm.desktop
-      fi
-    '';
   };
 }
