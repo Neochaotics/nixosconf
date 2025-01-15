@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   cfg = config.quinno.desktops.hyprland;
 in
@@ -23,6 +28,14 @@ in
       enable = true;
       systemd.enable = false;
       xwayland.enable = true;
+    };
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+      ];
     };
   };
 }
