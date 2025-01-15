@@ -102,7 +102,9 @@
                   inherit inputs hostname;
                   outputs = inputs.self;
                 };
-                modules = [ ./hosts/${hostname} ];
+                modules = [
+                  ./hosts/${hostname}
+                ];
               };
           in
           nixpkgs.lib.genAttrs hostNames mkHost;
