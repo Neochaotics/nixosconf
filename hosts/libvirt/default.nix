@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
+    ../../modules/home
   ];
 
   # Bootloader.
