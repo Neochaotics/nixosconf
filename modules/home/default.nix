@@ -1,5 +1,8 @@
 { inputs, pkgs, ... }:
 {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
   home-manager = {
     enable = true;
     useGlobalPkgs = true;
