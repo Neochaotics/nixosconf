@@ -1,9 +1,19 @@
+{ lib, config, ... }:
+let
+  cfg = config.cmodule.nixos.pkgs.hyprland;
+in
 {
-  programs.uwsm = {
-    enable = true;
+  options.cmodule.nixos.pkgs.hyprland = {
+    enable = lib.mkEnableOption "Enable configuration";
   };
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
+
+  config = lib.mkIf cfg.enable {
+    programs.uwsm = {
+      enable = true;
+    };
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
   };
 }

@@ -1,60 +1,69 @@
-{
-  lib,
-  ...
-}:
+{ lib, modulesPath, ... }:
+
 {
   imports = [
-    ./hardware-configuration.nix
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ../../modules/nixos/common/temp-misc.nix
     ../../modules/nixos
-    ../../modules/home
   ];
 
-  # Bootloader.
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.device = "/dev/vda";
-  #boot.loader.grub.useOSProber = true;
-
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      # When using plymouth, initrd can expand by a lot each time, so limit how many we keep around
-      configurationLimit = lib.mkDefault 10;
-    };
-    #efi.canTouchEfiVariables = true;
-    timeout = 3;
+  users.users.quinno = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    description = "Quinn O";
+  };
+  services = {
+    getty.autologinUser = "quinno";
+    getty.autologinOnce = true;
+    spice-vdagentd.enable = true;
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  time.timeZone = "America/New_York";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  lib.mkDefault.console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
+  home-manager.users.quinno = import ../../modules/home/quinno;
 
   system.stateVersion = "24.11";
+  cmodule = {
+    nixos = {
+      pkgs = {
+        hyprland.enable = true;
+        sudo.enable = true;
+      };
+      common = {
+        home-manager.enable = true;
+        nix.enable = true;
+      };
+    };
+  };
+
+  boot = {
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ohci_pci"
+      "ehci_pci"
+      "virtio_pci"
+      "ahci"
+      "usbhid"
+      "sr_mod"
+      "virtio_blk"
+    ];
+    kernelModules = [ "kvm-amd" ];
+  };
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/564fbf74-38de-42a7-ba67-7d993df8b611";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/2A41-5358";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
+
+  networking.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
 }

@@ -38,7 +38,6 @@
     inputs@{
       flake-parts,
       nixpkgs,
-      home-manager,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -99,22 +98,21 @@
       flake = {
         nixosConfigurations =
           let
+            inherit (nixpkgs) lib;
             hostNames = builtins.attrNames (builtins.readDir ./hosts);
             mkHost =
               hostname:
               nixpkgs.lib.nixosSystem {
                 specialArgs = {
-                  inherit inputs hostname;
+                  inherit inputs hostname lib;
                   outputs = inputs.self;
-                  inherit (nixpkgs) lib;
                 };
                 modules = [
                   ./hosts/${hostname}
-                  home-manager.nixosModules.home-manager
                 ];
               };
           in
-          nixpkgs.lib.genAttrs hostNames mkHost;
+          lib.genAttrs hostNames mkHost;
       };
     };
 }

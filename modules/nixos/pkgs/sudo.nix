@@ -1,30 +1,44 @@
-{ lib, pkgs, ... }:
 {
-  security.sudo = {
-    enable = lib.mkForce false;
-    extraConfig = lib.mkForce [ ];
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+let
+  cfg = config.cmodule.nixos.pkgs.sudo;
+in
+{
+  options.cmodule.nixos.pkgs.sudo = {
+    enable = lib.mkEnableOption "Enable configuration";
   };
-  security.sudo-rs = {
-    enable = true;
-    execWheelOnly = true;
-    extraRules = [
-      {
-        commands = [
-          {
-            command = "${pkgs.systemd}/bin/reboot";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "${pkgs.systemd}/bin/poweroff";
-            options = [ "NOPASSWD" ];
-          }
-        ];
-        groups = [ "wheel" ];
-      }
-    ];
-    extraConfig = with pkgs; ''
-      Defaults always_set_home
-      Defaults secure_path="${lib.makeBinPath [ systemd ]}:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
-    '';
+
+  config = lib.mkIf cfg.enable {
+    security.sudo = {
+      enable = lib.mkForce false;
+      extraConfig = lib.mkForce [ ];
+    };
+    security.sudo-rs = {
+      enable = true;
+      execWheelOnly = true;
+      extraRules = [
+        {
+          commands = [
+            {
+              command = "${pkgs.systemd}/bin/reboot";
+              options = [ "NOPASSWD" ];
+            }
+            {
+              command = "${pkgs.systemd}/bin/poweroff";
+              options = [ "NOPASSWD" ];
+            }
+          ];
+          groups = [ "wheel" ];
+        }
+      ];
+      extraConfig = with pkgs; ''
+        Defaults always_set_home
+        Defaults secure_path="${lib.makeBinPath [ systemd ]}:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+      '';
+    };
   };
 }
