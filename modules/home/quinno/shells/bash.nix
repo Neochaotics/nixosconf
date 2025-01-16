@@ -11,14 +11,5 @@
       "exit"
     ];
     historySize = 1000;
-    initExtra =
-      if config.wayland.windowManager.hyprland.enable then
-        "
-      if uwsm check may-start; then
-        exec uwsm start -S hyprland-uwsm.desktop
-      fi
-    "
-      else
-        "";
   };
 }
