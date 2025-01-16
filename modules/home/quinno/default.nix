@@ -6,6 +6,7 @@
   imports = [
     ./programs
     ./desktops/hyprland
+    ./shells/bash.nix
   ];
   home = {
     stateVersion = "24.05";

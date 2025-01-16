@@ -1,11 +1,11 @@
 { config, ... }:
 {
-  bash.programs = {
+  programs.bash = {
     enable = true;
     enableCompletion = true;
-    historyControl = "ignoreboth";
+    historyControl = [ "ignoreboth" ];
     historyFile = "${config.home.homeDirectory}/.bash_history";
-    histortFileSize = 1000;
+    historyFileSize = 1000;
     historyIgnore = [
       "clear"
       "exit"
