@@ -1,6 +1,6 @@
 {
   imports = [
-    ./hyrpland.nix
+    ./hyprland.nix
     ./sudo.nix
   ];
 }
