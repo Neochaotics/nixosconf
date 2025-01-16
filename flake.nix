@@ -35,7 +35,12 @@
   };
 
   outputs =
-    inputs@{ flake-parts, nixpkgs, ... }:
+    inputs@{
+      flake-parts,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
@@ -91,7 +96,7 @@
         };
 
       # NixOS system configurations
-      flake = _: {
+      flake = {
         nixosConfigurations =
           let
             hostNames = builtins.attrNames (builtins.readDir ./hosts);
@@ -101,9 +106,11 @@
                 specialArgs = {
                   inherit inputs hostname;
                   outputs = inputs.self;
+                  inherit (nixpkgs) lib;
                 };
                 modules = [
                   ./hosts/${hostname}
+                  home-manager.nixosModules.home-manager
                 ];
               };
           in
