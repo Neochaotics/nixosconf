@@ -19,7 +19,7 @@ jobs:
       - name: Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@vmain
+        uses: DeterminateSystems/update-flake-lock@main
         with:
           pr-title: "chore: update flake.lock"
           pr-labels: |
