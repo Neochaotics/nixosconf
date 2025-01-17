@@ -46,6 +46,7 @@ in
     pkgs = {
       hyprland.enable = true;
       sudo.enable = true;
+      steam.enable = true;
     };
     common = {
       home-manager.enable = true;
