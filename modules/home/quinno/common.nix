@@ -1,41 +1,52 @@
 {
+  lib,
+  config,
   pkgs,
   ...
 }:
+let
+  cfg = config.cmodule.home.quinno.common;
+in
 {
-  home.packages = with pkgs; [
-    # archives
-    zip
-    xz
-    unzip
-    p7zip
+  options.cmodule.home.quinno.common = {
+    enable = lib.mkEnableOption "Enable configuration";
+  };
 
-    # utils
-    ripgrep # recursively searches directories for a regex pattern
-    fzf # A command-line fuzzy finder
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      # archives
+      zip
+      xz
+      unzip
+      p7zip
 
-    # nix related
-    #
-    # it provides the command `nom` works just like `nix`
-    # with more details log output
-    nix-output-monitor
+      # utils
+      ripgrep # recursively searches directories for a regex pattern
+      fzf # A command-line fuzzy finder
 
-    #btop  # replacement of htop/nmon
-    iotop # io monitoring
-    iftop # network monitoring
+      # nix related
+      #
+      # it provides the command `nom` works just like `nix`
+      # with more details log output
+      nix-output-monitor
 
-    # system call monitoring
-    strace # system call monitoring
-    ltrace # library call monitoring
-    lsof # list open files
+      #btop  # replacement of htop/nmon
+      iotop # io monitoring
+      iftop # network monitoring
 
-    # system tools
-    sysstat
-    lm_sensors # for `sensors` command
-    ethtool
-    pciutils # lspci
-    usbutils # lsusb
+      # system call monitoring
+      strace # system call monitoring
+      ltrace # library call monitoring
+      lsof # list open files
 
-    nil
-  ];
+      # system tools
+      sysstat
+      lm_sensors # for `sensors` command
+      ethtool
+      pciutils # lspci
+      usbutils # lsusb
+
+      nil
+    ];
+  };
 }

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.quinno.desktops.hyprland;
+  cfg = config.cmodule.home.quinno.desktops.hyprland;
 in
 {
   imports = [
@@ -19,7 +19,7 @@ in
     ./keywords/hyprrules.nix
   ];
 
-  options.quinno.desktops.hyprland = {
+  options.cmodule.home.quinno.desktops.hyprland = {
     enable = lib.mkEnableOption "Enable Quinn's Hyprland's configuration";
   };
 

@@ -1,69 +1,55 @@
-{ lib, modulesPath, ... }:
-
+{ lib, ... }:
+let
+  username = "quinno";
+  formatUsername =
+    name:
+    lib.strings.stringAsChars (
+      c:
+      if c == builtins.substring ((builtins.stringLength name) - 1) 1 name then
+        " ${lib.strings.toUpper c}"
+      else if c == (builtins.substring 0 1 name) then
+        lib.strings.toUpper c
+      else
+        c
+    ) name;
+in
 {
   imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
-    ../../modules/nixos/common/temp-misc.nix
+    ./hardware.nix
     ../../modules/nixos
   ];
 
-  users.users.quinno = {
+  # User Configuration
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    description = "Quinn O";
+    description = formatUsername username;
   };
+  home-manager.users.${username} = import ./home.nix;
+
+  # Service Configuration
   services = {
-    getty.autologinUser = "quinno";
-    getty.autologinOnce = true;
+    getty = {
+      autologinUser = username;
+      autologinOnce = true;
+    };
     spice-vdagentd.enable = true;
   };
 
-  home-manager.users.quinno = import ../../modules/home/quinno;
-
+  # System Configuration
   system.stateVersion = "24.11";
-  cmodule = {
-    nixos = {
-      pkgs = {
-        hyprland.enable = true;
-        sudo.enable = true;
-      };
-      common = {
-        home-manager.enable = true;
-        nix.enable = true;
-      };
-    };
-  };
-
-  boot = {
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "ohci_pci"
-      "ehci_pci"
-      "virtio_pci"
-      "ahci"
-      "usbhid"
-      "sr_mod"
-      "virtio_blk"
-    ];
-    kernelModules = [ "kvm-amd" ];
-  };
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/564fbf74-38de-42a7-ba67-7d993df8b611";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/2A41-5358";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-
   networking.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
+  # Custom Module Configuration
+  cmodule.nixos = {
+    pkgs = {
+      hyprland.enable = true;
+      sudo.enable = true;
+    };
+    common = {
+      home-manager.enable = true;
+      nix.enable = true;
+    };
+  };
 }

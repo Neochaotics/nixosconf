@@ -1,18 +1,27 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  cfg = config.cmodule.home.quinno.xdg;
+in
 {
-  xdg = {
-    enable = true;
-    cacheHome = config.home.homeDirectory + "/.local/cache";
+  options.cmodule.home.quinno.xdg = {
+    enable = lib.mkEnableOption "Enable configuration";
+  };
 
-    mimeApps = {
+  config = lib.mkIf cfg.enable {
+    xdg = {
       enable = true;
-    };
+      cacheHome = config.home.homeDirectory + "/.local/cache";
 
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-      extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+      mimeApps = {
+        enable = true;
+      };
+
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+        extraConfig = {
+          XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+        };
       };
     };
   };

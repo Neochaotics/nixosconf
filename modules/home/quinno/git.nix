@@ -1,37 +1,48 @@
 {
+  lib,
+  config,
   pkgs,
   ...
 }:
+let
+  cfg = config.cmodule.home.quinno.git;
+in
 {
-  home.packages = [ pkgs.gh ];
+  options.cmodule.home.quinno.git = {
+    enable = lib.mkEnableOption "Enable configuration";
+  };
 
-  programs.git = {
-    enable = true;
+  config = lib.mkIf cfg.enable {
+    home.packages = [ pkgs.gh ];
 
-    userName = "Neochaotics";
-    userEmail = "neochaotics@pm.me";
+    programs.git = {
+      enable = true;
 
-    extraConfig = {
-      core = {
-        editor = "nvim";
+      userName = "Neochaotics";
+      userEmail = "neochaotics@pm.me";
+
+      extraConfig = {
+        core = {
+          editor = "nvim";
+        };
+        color = {
+          diff = "auto";
+          interactive = "auto";
+          pager = "true";
+          status = "auto";
+          branch = "auto";
+          ui = "true";
+        };
+        rerere = {
+          enabled = "true";
+          autoupdate = "true";
+        };
+        rebase = {
+          autoSquash = "true";
+        };
+        push.default = "upstream";
+        pull.rebase = "true";
       };
-      color = {
-        diff = "auto";
-        interactive = "auto";
-        pager = "true";
-        status = "auto";
-        branch = "auto";
-        ui = "true";
-      };
-      rerere = {
-        enabled = "true";
-        autoupdate = "true";
-      };
-      rebase = {
-        autoSquash = "true";
-      };
-      push.default = "upstream";
-      pull.rebase = "true";
     };
   };
 }
