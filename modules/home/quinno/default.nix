@@ -4,9 +4,14 @@
 }:
 {
   imports = [
-    ./programs
     ./desktops/hyprland
-    ./shells/bash.nix
+    ./bash.nix
+    ./browsers.nix
+    ./common.nix
+    ./git.nix
+    ./media.nix
+    ./xdg.nix
+    ./term.nix
   ];
   home = {
     stateVersion = "24.05";
