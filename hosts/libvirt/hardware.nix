@@ -1,10 +1,4 @@
-{ modulesPath, ... }:
-
 {
-  imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
-  ];
-
   # Boot Configuration
   boot = {
     initrd.availableKernelModules = [
@@ -16,8 +10,21 @@
       "usbhid"
       "sr_mod"
       "virtio_blk"
+      "virtio_net"
+      "virtio_pci"
+      "virtio_mmio"
+      "virtio_blk"
+      "virtio_scsi"
+      "9p"
+      "9pnet_virtio"
     ];
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [
+      "kvm-amd"
+      "virtio_balloon"
+      "virtio_console"
+      "virtio_rng"
+      "virtio_gpu"
+    ];
   };
 
   # Filesystem Configuration

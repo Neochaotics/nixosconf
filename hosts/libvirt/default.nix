@@ -51,6 +51,7 @@ in
     common = {
       home-manager.enable = true;
       nix.enable = true;
+      cachy-sysctl.enable = true;
     };
   };
 }
