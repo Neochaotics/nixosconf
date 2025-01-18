@@ -50,38 +50,40 @@
         inputs.git-hooks-nix.flakeModule
       ];
 
+      # Per-system configuration
       perSystem =
         { config, pkgs, ... }:
         {
-          # Code formatting and linting configuration
+          # Code formatting and linting setup
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
             flakeCheck = false;
             programs = {
-              # Nix-specific tools
+              # Nix formatting tools
               nixfmt = {
                 enable = true;
                 package = pkgs.nixfmt-rfc-style;
               };
-              statix.enable = true;
-              deadnix.enable = true;
-              # Other formatting tools
-              actionlint.enable = true;
-              mdformat.enable = true;
+              statix.enable = true; # Static analysis for Nix
+              deadnix.enable = true; # Detect dead code in Nix
+
+              # Additional formatters
+              actionlint.enable = true; # GitHub Actions linter
+              mdformat.enable = true; # Markdown formatter
             };
           };
 
-          # Development shell configuration
+          # Development environment configuration
           devshells.default = {
             name = "nixdev";
-            motd = "";
+            motd = ""; # Message of the day
             packages = [
               pkgs.nil # Nix Language Server
               config.treefmt.build.wrapper
             ] ++ (pkgs.lib.attrValues config.treefmt.build.programs);
           };
 
-          # Pre-commit hooks configuration
+          # Git pre-commit hooks
           pre-commit.settings.hooks = {
             treefmt = {
               enable = true;

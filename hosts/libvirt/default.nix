@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, inputs, ... }:
 let
   username = "quinno";
   formatUsername =
@@ -15,6 +15,7 @@ let
 in
 {
   imports = [
+    inputs.disko.nixosModules.disko
     ./hardware.nix
     ../../modules/nixos
   ];
