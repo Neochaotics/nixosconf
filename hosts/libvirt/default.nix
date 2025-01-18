@@ -28,12 +28,10 @@ in
   home-manager.users.${username} = import ./home.nix;
 
   # Service Configuration
-  services = {
-    getty = {
-      autologinUser = username;
-      autologinOnce = true;
-    };
-    spice-vdagentd.enable = true;
+
+  services.getty = {
+    autologinUser = username;
+    autologinOnce = true;
   };
 
   # System Configuration

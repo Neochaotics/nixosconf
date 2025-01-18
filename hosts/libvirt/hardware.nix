@@ -27,6 +27,8 @@
     ];
   };
 
+  services.spice-vdagentd.enable = true;
+
   # Filesystem Configuration
   fileSystems = {
     "/" = {

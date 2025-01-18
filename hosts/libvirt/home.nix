@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ../../modules/home/quinno
@@ -19,4 +20,8 @@
       desktops.hyprland.enable = true;
     };
   };
+
+  home.packages = with pkgs; [
+    vesktop
+  ];
 }
