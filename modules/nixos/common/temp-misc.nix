@@ -1,4 +1,4 @@
-{ lib, hostname, ... }:
+{ hostname, ... }:
 {
   networking.hostName = hostname; # Define your hostname.
 
