@@ -5,15 +5,15 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.common.cachy-kernel;
+  cfg = config.cmodule.nixos.common.kernel;
 in
 {
-  options.cmodule.nixos.common.cachy-kernel = {
+  options.cmodule.nixos.common.kernel = {
     enable = lib.mkEnableOption "Enable configuration";
   };
 
   config = lib.mkIf cfg.enable {
-    boot.kernelPackages = pkgs.linuxPackages_cachyos;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
     services.scx.enable = true; # by default uses scx_rustland scheduler
   };
 }
