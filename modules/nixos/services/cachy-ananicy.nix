@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.services.ananicy;
+  cfg = config.cmodule.nixos.services.cachy-ananicy;
 in
 {
-  options.cmodule.nixos.services.ananicy = {
+  options.cmodule.nixos.services.cachy-ananicy = {
     enable = lib.mkEnableOption "Enable configuration";
   };
 
@@ -45,7 +45,7 @@ in
 
         # It tries to move realtime task to root cgroup to be able to move it to the ananicy-cpp controlled one
         # NOTE: may introduce issues, for example with polkit
-        cgroup_realtime_workaround = false;
+        cgroup_realtime_workaround = lib.mkForce false;
       };
     };
   };

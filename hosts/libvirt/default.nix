@@ -51,6 +51,10 @@ in
       home-manager.enable = true;
       nix.enable = true;
       cachy-sysctl.enable = true;
+      cachy-kernel.enable = true;
+    };
+    services = {
+      cachy-ananicy.enable = true;
     };
   };
 }
