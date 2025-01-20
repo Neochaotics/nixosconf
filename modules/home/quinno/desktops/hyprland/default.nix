@@ -32,7 +32,7 @@ in
 
     programs.bash.initExtra = ''
       if uwsm check may-start; then
-        exec uwsm start -S hyprland-uwsm.desktop >/dev/null 2>&1
+        exec uwsm start -S hyprland-uwsm.desktop
       fi
     '';
 
