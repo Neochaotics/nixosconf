@@ -30,11 +30,11 @@ in
       xwayland.enable = true;
     };
 
-    programs.bash.initExtra = "
+    programs.bash.initExtra = ''
       if uwsm check may-start; then
-        exec uwsm start -S hyprland-uwsm.desktop
+        exec uwsm start -S hyprland-uwsm.desktop >/dev/null 2>&1
       fi
-      ";
+    '';
 
     xdg.portal = {
       enable = true;
