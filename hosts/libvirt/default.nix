@@ -1,4 +1,9 @@
-{ lib, inputs, ... }:
+{
+  lib,
+  inputs,
+  config,
+  ...
+}:
 let
   username = "quinno";
   formatUsername =
@@ -19,13 +24,16 @@ in
     ./hardware.nix
     ../../modules/nixos
   ];
-
-  # User Configuration
   users.users.${username} = {
+    # User Configuration
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
     description = formatUsername username;
+    extraGroups =
+      [ "wheel" ]
+      ++ lib.optional config.security.rtkit.enable "rtkit"
+      ++ lib.optional config.services.pipewire.enable "audio";
   };
+
   home-manager.users.${username} = import ./home.nix;
 
   # Service Configuration
@@ -52,6 +60,7 @@ in
       nix.enable = true;
       cachy-sysctl.enable = true;
       boot.enable = true;
+      pipewire.enable = true;
     };
     services = {
       cachy-ananicy.enable = true;

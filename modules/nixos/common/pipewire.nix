@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  username,
   ...
 }:
 let
@@ -25,8 +24,6 @@ in
       playerctl
       alsa-utils
     ];
-
-    sound.enable = lib.mkForce false;
 
     services = {
       pipewire = {
@@ -98,9 +95,6 @@ in
       ];
       rtkit.enable = true;
     };
-    users.users.${username}.extraGroups =
-      lib.optional config.security.rtkit.enable "rtkit"
-      ++ lib.optional config.services.pipewire.enable "audio";
   };
 
 }

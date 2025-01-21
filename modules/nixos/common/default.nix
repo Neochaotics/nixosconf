@@ -6,5 +6,6 @@
     ./temp-misc.nix # temp
     ./cachy-sysctl.nix
     ./boot.nix
+    ./pipewire.nix
   ];
 }
