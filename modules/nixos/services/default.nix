@@ -1,5 +1,6 @@
 {
   imports = [
-    ./cachy-ananicy.nix
+    ./ananicy.nix
+    ./pipewire.nix
   ];
 }

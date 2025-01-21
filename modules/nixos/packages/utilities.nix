@@ -8,12 +8,12 @@ let
   cfg = config.cmodule.home.quinno.common;
 in
 {
-  options.cmodule.home.quinno.common = {
+  options.cmodule.nixos.common.util = {
     enable = lib.mkEnableOption "Enable configuration";
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
+    enviornment.packages = with pkgs; [
       # archives
       zip
       xz

@@ -9,14 +9,14 @@ let
 in
 {
   imports = [
-    ./variables/hyprgen.nix
-    ./variables/hyprappearance.nix
-    ./variables/hyprinput.nix
-    ./variables/hyprmisc.nix
+    ./general.nix
+    ./appearance.nix
+    ./input.nix
+    ./misc.nix
 
-    ./keywords/hyprbinds.nix
-    ./keywords/hyprspaces.nix
-    ./keywords/hyprrules.nix
+    ./bindings.nix
+    ./monitors.nix
+    ./windowrules.nix
   ];
 
   options.cmodule.home.quinno.desktops.hyprland = {
