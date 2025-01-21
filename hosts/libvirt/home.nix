@@ -1,7 +1,12 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ../../modules/home/quinno
+    inputs.impermanence.homeManagerModules.impermanence
   ];
 
   home = {

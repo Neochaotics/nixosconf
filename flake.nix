@@ -111,6 +111,7 @@
                 };
                 modules = [
                   ./hosts/${hostname}
+                  inputs.impermanence.nixosModules.impermanence
                 ];
               };
           in
