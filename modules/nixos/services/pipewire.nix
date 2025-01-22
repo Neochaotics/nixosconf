@@ -14,6 +14,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # Enable threadirqs for better audio performance
+    # https://github.com/musnix/musnix/blob/86ef22cbdd7551ef325bce88143be9f37da64c26/modules/base.nix#L76
     boot = lib.mkIf config.services.pipewire.enable {
       kernelParams = [ "threadirqs" ];
     };
@@ -38,15 +40,16 @@ in
           enable = true;
         };
       };
+      # Expose timers and cpu dma latency the members of the audio group
+      # https://github.com/musnix/musnix/blob/86ef22cbdd7551ef325bce88143be9f37da64c26/modules/base.nix#L139
       udev.extraRules = ''
-        # Expose important timers the members of the audio group
         KERNEL=="rtc0", GROUP="audio"
         KERNEL=="hpet", GROUP="audio"
-        # Allow users in the audio group to change cpu dma latency
         DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root", GROUP="audio", MODE="0660"
       '';
     };
     # Allow members of the "audio" group to set RT priorities
+    # https://github.com/musnix/musnix/blob/86ef22cbdd7551ef325bce88143be9f37da64c26/modules/base.nix#L112
     security = {
       pam.loginLimits = [
         {
