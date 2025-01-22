@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ../../modules/home/quinno
+    ../../modules/home/users/quinno
     inputs.impermanence.homeManagerModules.impermanence
   ];
 
@@ -15,14 +15,19 @@
     homeDirectory = "/home/quinno";
   };
 
-  cmodule.home = {
+  cm.home.users = {
     quinno = {
-      xdg.enable = true;
-      git.enable = true;
-      foot.enable = true;
-      common.enable = true;
-      bash.enable = true;
-      desktops.hyprland.enable = true;
+      programs = {
+        firefox.enable = true;
+        foot.enable = true;
+        git.enable = true;
+      };
+      system = {
+        bash.enable = true;
+        #persistance.enable = true;
+        xdg.enable = true;
+      };
+      desktop.hyprland.enable = true;
     };
   };
 

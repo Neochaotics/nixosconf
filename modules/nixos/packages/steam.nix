@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.pkgs.steam;
+  cfg = config.cm.nixos.packages.steam;
 in
 {
-  options.cmodule.nixos.pkgs.steam = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.packages.steam = {
+    enable = lib.mkEnableOption "Enable Steam gaming configuration with proton-ge, gamescope, mangohud and gamemode";
   };
 
   config = lib.mkIf cfg.enable {
@@ -32,7 +32,6 @@ in
       protontricks.enable = true;
       gamescopeSession = {
         enable = true;
-
       };
     };
   };

@@ -4,11 +4,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.home.quinno.persist;
+  cfg = config.cm.home.users.quinno.system.persistance;
 in
 {
-  options.cmodule.home.quinno.persist = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.home.users.quinno.system.persistance = {
+    enable = lib.mkEnableOption "Enable persistence configuration for quinno user";
   };
 
   config = lib.mkIf cfg.enable {

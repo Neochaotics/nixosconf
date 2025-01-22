@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.services.cachy-ananicy;
+  cfg = config.cm.nixos.services.ananicy;
 in
 {
-  options.cmodule.nixos.services.cachy-ananicy = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.services.ananicy = {
+    enable = lib.mkEnableOption "Enable the ananicy service for process resource management with customized rules and settings";
   };
 
   config = lib.mkIf cfg.enable {

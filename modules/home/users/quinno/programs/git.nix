@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.home.quinno.git;
+  cfg = config.cm.home.users.quinno.programs.git;
 in
 {
-  options.cmodule.home.quinno.git = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.home.users.quinno.programs.git = {
+    enable = lib.mkEnableOption "Enable git configuration";
   };
 
   config = lib.mkIf cfg.enable {

@@ -1,7 +1,8 @@
 {
   imports = [
-    ./common
-    ./pkgs
+    ./test
     ./services
+    ./system
+    ./packages
   ];
 }

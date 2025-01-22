@@ -4,11 +4,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.common.persistence;
+  cfg = config.cm.nixos.system.persistence;
 in
 {
-  options.cmodule.nixos.common.persistence = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.system.persistence = {
+    enable = lib.mkEnableOption "System persistence for Nix";
   };
 
   config = lib.mkIf cfg.enable {

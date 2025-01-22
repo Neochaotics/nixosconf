@@ -3,15 +3,9 @@
 }:
 {
   imports = [
-    ./desktops/hyprland
-    ./bash.nix
-    ./firefox.nix
-    ./common.nix
-    ./git.nix
-    ./xdg.nix
-    ./foot.nix
+    ./desktop/hyprland
+    ./programs
+    ./system
   ];
-
   programs.home-manager.enable = true;
-
 }

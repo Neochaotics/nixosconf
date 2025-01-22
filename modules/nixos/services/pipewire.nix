@@ -5,12 +5,12 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.common.pipewire;
+  cfg = config.cm.nixos.services.pipewire;
 in
 {
 
-  options.cmodule.nixos.common.pipewire = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.services.pipewire = {
+    enable = lib.mkEnableOption "Enable PipeWire configuration to provide low-latency audio/video routing with pro-audio optimizations";
   };
 
   config = lib.mkIf cfg.enable {
@@ -28,33 +28,14 @@ in
     services = {
       pipewire = {
         enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = lib.mkForce config.hardware.graphics.enable32Bit;
+        alsa = {
+          enable = true;
+          support32Bit = lib.mkForce config.hardware.graphics.enable32Bit;
+        };
         pulse.enable = true;
         jack.enable = false;
         wireplumber = {
           enable = true;
-          extraConfig.bluetoothEnhancements = {
-            "monitor.bluez.properties" = {
-              "bluez5.enable-sbc-xq" = true;
-              "bluez5.enable-msbc" = true;
-              "bluez5.enable-hw-volume" = true;
-              "bluez5.roles" = [
-                "hsp_hs"
-                "hsp_ag"
-                "hfp_hf"
-                "hfp_ag"
-              ];
-            };
-          };
-          extraConfig.pipewire."92-low-latency" = {
-            "context.properties" = {
-              "default.clock.rate" = 48000;
-              "default.clock.quantum" = 32;
-              "default.clock.min-quantum" = 32;
-              "default.clock.max-quantum" = 32;
-            };
-          };
         };
       };
       udev.extraRules = ''

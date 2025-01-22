@@ -1,10 +1,10 @@
 { config, lib, ... }:
 let
-  cfg = config.cmodule.home.quinno.xdg;
+  cfg = config.cm.home.users.quinno.system.xdg;
 in
 {
-  options.cmodule.home.quinno.xdg = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.home.users.quinno.system.xdg = {
+    enable = lib.mkEnableOption "Enables XDG directory configuration and default paths";
   };
 
   config = lib.mkIf cfg.enable {

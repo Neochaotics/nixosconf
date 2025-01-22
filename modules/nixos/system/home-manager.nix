@@ -5,15 +5,15 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.common.home-manager;
+  cfg = config.cm.nixos.system.home-manager;
 in
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  options.cmodule.nixos.common.home-manager = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.system.home-manager = {
+    enable = lib.mkEnableOption "Enable home-manager configuration for system";
   };
 
   config = lib.mkIf cfg.enable {

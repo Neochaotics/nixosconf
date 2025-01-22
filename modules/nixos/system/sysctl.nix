@@ -4,11 +4,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.common.cachy-sysctl;
+  cfg = config.cm.nixos.system.sysctl;
 in
 {
-  options.cmodule.nixos.common.cachy-sysctl = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.system.sysctl = {
+    enable = lib.mkEnableOption "Enable kernel sysctl parameters for system tuning, performance optimization, and security hardening";
   };
 
   config = lib.mkIf cfg.enable {

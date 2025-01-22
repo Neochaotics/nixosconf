@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.common.nix;
+  cfg = config.cm.nixos.system.nix;
 in
 {
-  options.cmodule.nixos.common.nix = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.system.nix = {
+    enable = lib.mkEnableOption "Enable nix system configuration";
   };
 
   config = lib.mkIf cfg.enable {

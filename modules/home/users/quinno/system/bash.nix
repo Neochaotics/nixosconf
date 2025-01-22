@@ -4,11 +4,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.home.quinno.bash;
+  cfg = config.cm.home.users.quinno.system.bash;
 in
 {
-  options.cmodule.home.quinno.bash = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.home.users.quinno.system.bash = {
+    enable = lib.mkEnableOption "Enable bash configuration and settings";
   };
 
   config = lib.mkIf cfg.enable {

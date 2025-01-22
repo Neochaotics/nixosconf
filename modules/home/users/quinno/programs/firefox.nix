@@ -4,11 +4,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.home.quinno.firefox;
+  cfg = config.cm.home.users.quinno.programs.firefox;
 in
 {
-  options.cmodule.home.quinno.firefox = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.home.users.quinno.programs.firefox = {
+    enable = lib.mkEnableOption "Firefox browser configuration";
   };
   config = lib.mkIf cfg.enable {
     xdg.mimeApps.defaultApplications = {

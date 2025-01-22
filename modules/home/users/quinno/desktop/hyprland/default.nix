@@ -5,12 +5,12 @@
   ...
 }:
 let
-  cfg = config.cmodule.home.quinno.desktops.hyprland;
+  cfg = config.cm.home.users.quinno.desktop.hyprland;
 in
 {
   imports = [
     ./general.nix
-    ./appearance.nix
+    ./appearence.nix
     ./input.nix
     ./misc.nix
 
@@ -19,8 +19,8 @@ in
     ./windowrules.nix
   ];
 
-  options.cmodule.home.quinno.desktops.hyprland = {
-    enable = lib.mkEnableOption "Enable Quinn's Hyprland's configuration";
+  options.cm.home.users.quinno.desktop.hyprland = {
+    enable = lib.mkEnableOption "Enable Quinn's Hyprland configuration";
   };
 
   config = lib.mkIf cfg.enable {

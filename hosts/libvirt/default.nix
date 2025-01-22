@@ -49,21 +49,21 @@ in
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # Custom Module Configuration
-  cmodule.nixos = {
-    pkgs = {
+  cm.nixos = {
+    packages = {
       hyprland.enable = true;
       sudo.enable = true;
       steam.enable = true;
     };
-    common = {
+    system = {
       home-manager.enable = true;
       nix.enable = true;
-      cachy-sysctl.enable = true;
-      boot.enable = true;
-      pipewire.enable = true;
+      sysctl.enable = true;
+      systemd-boot.enable = true;
     };
     services = {
-      cachy-ananicy.enable = true;
+      ananicy.enable = true;
+      pipewire.enable = true;
     };
   };
 }

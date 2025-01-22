@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.nixos.common.boot;
+  cfg = config.cm.nixos.system.systemd-boot;
 in
 {
-  options.cmodule.nixos.common.boot = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.system.systemd-boot = {
+    enable = lib.mkEnableOption "Enable configuration for boot optimization and systemd-boot setup";
   };
 
   config = lib.mkIf cfg.enable {

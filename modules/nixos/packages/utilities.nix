@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.cmodule.home.quinno.common;
+  cfg = config.cm.nixos.packages.util;
 in
 {
-  options.cmodule.nixos.common.util = {
-    enable = lib.mkEnableOption "Enable configuration";
+  options.cm.nixos.packages.util = {
+    enable = lib.mkEnableOption "Enables util package installation including archives tools, search utilities, monitoring tools, system utilities and Nix-related packages";
   };
 
   config = lib.mkIf cfg.enable {
