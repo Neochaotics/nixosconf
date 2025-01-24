@@ -29,19 +29,24 @@
 
   services.spice-vdagentd.enable = true;
 
-  # Filesystem Configuration
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/564fbf74-38de-42a7-ba67-7d993df8b611";
-      fsType = "ext4";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/2A41-5358";
-      fsType = "vfat";
-      options = [
-        "fmask=0077"
-        "dmask=0077"
-      ];
-    };
+  disko.devices.disk = {
+    primary.device = "/dev/disk/by-id/virtio-CT1000P5PSSD8_22343AC3C7AD";
+    secondary.device = "/dev/disk/by-id/virtio-CT2000P5PSSD8_23113F244794";
   };
+
+  # Filesystem Configuration
+  # fileSystems = {
+  #   "/" = {
+  #     device = "/dev/disk/by-uuid/564fbf74-38de-42a7-ba67-7d993df8b611";
+  #     fsType = "ext4";
+  #   };
+  #   "/boot" = {
+  #     device = "/dev/disk/by-uuid/2A41-5358";
+  #     fsType = "vfat";
+  #     options = [
+  #       "fmask=0077"
+  #       "dmask=0077"
+  #     ];
+  #   };
+  # };
 }

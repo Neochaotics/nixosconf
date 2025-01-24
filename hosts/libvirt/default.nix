@@ -22,8 +22,10 @@ in
   imports = [
     inputs.disko.nixosModules.disko
     ./hardware.nix
+    ./disko.nix
     ../../modules/nixos
   ];
+
   users.users.${username} = {
     # User Configuration
     isNormalUser = true;
