@@ -67,7 +67,7 @@
               type = "luks";
               name = "secondarycrypt";
               settings.allowDiscards = true;
-              passwordFile = "/tmp/secondary.key";
+              #passwordFile = "/tmp/secondary.key";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
