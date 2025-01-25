@@ -28,6 +28,7 @@ in
         gamescope
         mangohud
         gamemode
+        mesa
       ];
       protontricks.enable = true;
       gamescopeSession = {
