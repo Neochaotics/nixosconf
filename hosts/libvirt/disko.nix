@@ -22,7 +22,6 @@
               type = "luks";
               name = "primarycrypt";
               settings.allowDiscards = true;
-              passwordFile = "/tmp/primary.key";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
