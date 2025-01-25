@@ -20,8 +20,9 @@
             size = "100%";
             content = {
               type = "luks";
-              name = "cryptedprimary";
+              name = "primarycrypt";
               settings.allowDiscards = true;
+              passwordFile = "/tmp/primary.key";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
@@ -33,8 +34,8 @@
                       "noatime"
                     ];
                   };
-                  "/persistance" = {
-                    mountpoint = "/persistance";
+                  "/persist" = {
+                    mountpoint = "/persist";
                     mountOptions = [
                       "compress=zstd"
                       "noatime"
@@ -63,8 +64,9 @@
             size = "100%";
             content = {
               type = "luks";
-              name = "cryptedsecondary";
+              name = "secondarycrypt";
               settings.allowDiscards = true;
+              passwordFile = "/tmp/secondary.key";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
@@ -76,8 +78,8 @@
                       "noatime"
                     ];
                   };
-                  "/persistancehome" = {
-                    mountpoint = "/persistancehome";
+                  "/persist/home" = {
+                    mountpoint = "/persist/home";
                     mountOptions = [
                       "compress=zstd"
                       "noatime"
@@ -91,4 +93,6 @@
       };
     };
   };
+
+  fileSystems."/persist".neededForBoot = true;
 }
