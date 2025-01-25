@@ -2,7 +2,7 @@
   disko.devices.disk = {
     primary = {
       type = "disk";
-      device = "/dev/disk/by-id/virtio-CT1000P5PSSD8_22343AC3C7AD";
+      device = "/dev/disk/by-id/virtio-CT1000P5PSSD8_22343AC3C7AD_1";
       content = {
         type = "gpt";
         partitions = {
@@ -57,7 +57,7 @@
     };
     secondary = {
       type = "disk";
-      device = "/dev/disk/by-id/virtio-CT2000P5PSSD8_23113F244794";
+      device = "/dev/disk/by-id/virtio-CT2000P5PSSD8_23113F244794_1";
       content = {
         type = "gpt";
         partitions = {
