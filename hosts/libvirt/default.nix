@@ -22,7 +22,7 @@ in
   imports = [
     inputs.disko.nixosModules.disko
     ./hardware.nix
-    ./disko.nix
+    #./disko.nix
     ../../modules/nixos
   ];
 
