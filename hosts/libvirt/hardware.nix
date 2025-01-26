@@ -30,18 +30,18 @@
   services.spice-vdagentd.enable = true;
 
   # Filesystem Configuration
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/564fbf74-38de-42a7-ba67-7d993df8b611";
-      fsType = "ext4";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/2A41-5358";
-      fsType = "vfat";
-      options = [
-        "fmask=0077"
-        "dmask=0077"
-      ];
-    };
-  };
+  #fileSystems = {
+  #  "/" = {
+  #    device = "/dev/disk/by-uuid/564fbf74-38de-42a7-ba67-7d993df8b611";
+  #    fsType = "ext4";
+  #  };
+  #  "/boot" = {
+  #    device = "/dev/disk/by-uuid/2A41-5358";
+  #    fsType = "vfat";
+  #    options = [
+  #      "fmask=0077"
+  #      "dmask=0077"
+  #    ];
+  #  };
+  #};
 }
