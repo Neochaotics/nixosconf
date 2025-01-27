@@ -7,6 +7,7 @@
   imports = [
     ../../modules/home/users/quinno
     inputs.impermanence.homeManagerModules.impermanence
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   home = {

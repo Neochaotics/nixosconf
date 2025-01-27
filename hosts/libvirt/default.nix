@@ -22,7 +22,7 @@ in
   imports = [
     inputs.disko.nixosModules.disko
     ./hardware.nix
-    ./disko.nix
+    ./disk-config.nix
     ../../modules/nixos
   ];
 
@@ -62,6 +62,7 @@ in
       nix.enable = true;
       sysctl.enable = true;
       systemd-boot.enable = true;
+      sops.enable = true;
     };
     services = {
       ananicy.enable = true;
