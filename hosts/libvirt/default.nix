@@ -67,6 +67,7 @@ in
     services = {
       ananicy.enable = true;
       pipewire.enable = true;
+      openssh.enable = true;
     };
   };
 }
