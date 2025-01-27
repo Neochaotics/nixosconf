@@ -7,7 +7,10 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # System and state management
     home-manager = {
@@ -114,7 +117,6 @@
                 modules = [
                   ./hosts/${hostname}
                   inputs.impermanence.nixosModules.impermanence
-                  inputs.sops-nix.nixosModules.sops
                 ];
               };
           in
