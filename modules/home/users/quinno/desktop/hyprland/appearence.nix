@@ -33,8 +33,6 @@
         render_power = 1;
         sharp = false;
         ignore_window = true;
-        color = "rgba(0000004d)";
-        color_inactive = "rgba(00000040)";
         offset = "0, 0";
         scale = 2.0;
       };

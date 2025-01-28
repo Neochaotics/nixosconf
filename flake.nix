@@ -7,6 +7,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+    stylix.url = "github:danth/stylix";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
