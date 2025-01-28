@@ -28,6 +28,9 @@ in
         luks_key = {
           path = "/voot/disk.key";
         };
+        "users/quinno/password" = {
+          neededForUsers = true;
+        };
       };
     };
   };
