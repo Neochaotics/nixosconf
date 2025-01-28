@@ -1,4 +1,3 @@
-{ config, ... }:
 {
   disko.devices.disk = {
     primary = {
@@ -24,7 +23,6 @@
               name = "primarycrypt";
               settings = {
                 allowDiscards = true;
-                keyFile = "${config.sops.secrets.luks_key.path}";
               };
               content = {
                 type = "btrfs";
@@ -71,7 +69,6 @@
               name = "secondarycrypt";
               settings = {
                 allowDiscards = true;
-                keyFile = "${config.sops.secrets.luks_key.path}";
               };
               #passwordFile = "/tmp/secondary.key";
               content = {

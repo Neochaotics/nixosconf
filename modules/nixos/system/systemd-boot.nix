@@ -46,7 +46,9 @@ in
         "vga=current"
       ];
       consoleLogLevel = lib.mkForce 0;
-      initrd.verbose = false;
+      initrd = {
+        verbose = false;
+      };
     };
     services.scx.enable = true; # by default uses scx_rustland scheduler
   };

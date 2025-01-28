@@ -25,7 +25,9 @@ in
         generateKey = true;
       };
       secrets = {
-        luks_key = { };
+        luks_key = {
+          path = "/voot/disk.key";
+        };
       };
     };
   };
